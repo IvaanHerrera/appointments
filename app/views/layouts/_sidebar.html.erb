@@ -1,0 +1,26 @@
+<div class="d-flex col-3 flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;" bis_skin_checked="1">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Appointments</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+
+    </ul>
+    <hr>
+    <div class="dropdown" bis_skin_checked="1">
+      <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>User</strong>
+      </a>
+      <ul class="dropdown-menu text-small shadow">
+        <li>
+          <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow">
+          <i class="fa-solid fa-power-off"></i>
+          <span class="tooltip__content">Sign out</span>
+        </a>
+          <%# <a class="dropdown-item" href="#">Sign out</a> %>
+        </li>
+      </ul>
+    </div>
+  </div>
