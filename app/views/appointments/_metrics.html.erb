@@ -1,0 +1,26 @@
+<div class="card-group mb-4">
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">Number of current appointments</p>
+      <p class="card-text">
+        <h2 class="text-body-secondary"><%= @statistics[:current_appointments] %></h2>
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">Number of past appointments</p>
+      <p class="card-text">
+        <h2 class="text-body-secondary"><%= @statistics[:past_appointments] %></h2>
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">Number of future appointments</p>
+      <p class="card-text">
+        <h2 class="text-body-secondary"><%= @statistics[:future_appointments] %></h2>
+      </p>
+    </div>
+  </div>
+</div>

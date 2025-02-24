@@ -1,0 +1,7 @@
+<h1><%= @client.full_name %></h1>
+<% @client.addresses.each do |address| %>
+  <p><strong>Contact Addrress:</strong> <%= address.street %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-warning' %>
+<%= link_to 'Back', clients_path, class: 'btn btn-secondary' %>

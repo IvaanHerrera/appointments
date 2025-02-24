@@ -1,0 +1,48 @@
+<%= form_with(model: @appointment, local: true, remote: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :user_id, "User" %>
+    <%= form.collection_select :user_id, User.all, :id, :name, {}, class: "form-control #{'is-invalid' if @appointment.errors[:user_id].any?}" %>
+    <% if @appointment.errors[:user_id].any? %>
+      <div class="invalid-feedback">
+        <%= @appointment.errors[:user_id].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :client_id, "Client" %>
+    <%= form.collection_select :client_id, Client.all, :id, :full_name, {}, class: "form-control #{'is-invalid' if @appointment.errors[:client_id].any?}" %>
+     <% if @appointment.errors[:client_id].any? %>
+      <div class="invalid-feedback">
+        <%= @appointment.errors[:client_id].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :location_id, "Location" %>
+    <%= form.collection_select :location_id, Location.all, :id, :name, {}, class: "form-control #{'is-invalid' if @appointment.errors[:location_id].any?}" %>
+    <% if @appointment.errors[:location_id].any? %>
+      <div class="invalid-feedback">
+        <%= @appointment.errors[:location_id].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :scheduled_at, "Scheduled At" %>
+    <%= form.datetime_field :scheduled_at, class: "form-control datetimepicker #{'is-invalid' if @appointment.errors[:scheduled_at].any?}" %>
+      <div class="invalid-feedback">
+        <%= @appointment.errors[:scheduled_at].join(", ") %>
+      </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status %>
+    <%= form.select :status, ["pending", "confirmed", "canceled"], {}, class: 'form-control' %>
+  </div>
+
+  <%= form.submit class: 'btn btn-success' %>
+<% end %>
+
+<%= link_to 'Back', appointments_path, class: 'btn btn-secondary mt-3' %>

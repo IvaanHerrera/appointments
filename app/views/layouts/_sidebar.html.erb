@@ -5,7 +5,27 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-
+      <li class="nav-item">
+        <%=link_to appointments_path(), class: "nav-link #{'active' if request.path.start_with?('/appointments')}" do%>
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          
+          <span class="hide"><%=t('sidebar.appointments')%></span>
+        <%end%>
+      </li>
+      <li>
+        <%=link_to clients_path(), class: "nav-link #{'active' if request.path.start_with?('/clients')}" do%>
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          
+          <span class="hide"><%=t('sidebar.clients')%></span>
+        <%end%>
+      </li>
+      <li>
+        <%=link_to locations_path(), class: "nav-link #{'active' if request.path.start_with?('/locations')}" do%>
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          
+          <span class="hide"><%=t('sidebar.locations')%></span>
+        <%end%>
+      </li>
     </ul>
     <hr>
     <div class="dropdown" bis_skin_checked="1">

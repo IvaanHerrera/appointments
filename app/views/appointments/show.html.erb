@@ -1,0 +1,9 @@
+<h1>Appointment Details</h1>
+<p><strong>User:</strong> <%= @appointment.user.name %></p>
+<p><strong>Client:</strong> <%= @appointment.client.full_name %></p>
+<p><strong>Location:</strong> <%= @appointment.location.name %></p>
+<p><strong>Scheduled At:</strong> <%= l(@appointment.scheduled_at, format: :long) %></p>
+<p><strong>Status:</strong> <%= @appointment.status %></p>
+
+<%= link_to 'Edit', edit_appointment_path(@appointment), class: 'btn btn-warning' %>
+<%= link_to 'Back', appointments_path, class: 'btn btn-secondary' %>
