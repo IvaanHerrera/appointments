@@ -1,3 +1,13 @@
+<% if @appointment.errors.any? %>
+  <div class="alert alert-danger">
+    <h4><%= @appointment.errors.count %> errors were found:</h4>
+    <ul>
+      <% @appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_with(model: @appointment, local: true, remote: true) do |form| %>
   <div class="mb-3">
     <%= form.label :user_id, "User" %>

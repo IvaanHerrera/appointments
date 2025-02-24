@@ -5,5 +5,3 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 
 import 'jquery';
-
-import Rails from 'rails-ujs';

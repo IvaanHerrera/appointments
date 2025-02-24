@@ -28,6 +28,7 @@
       <th>Client</th>
       <th>Location</th>
       <th>Scheduled At</th>
+      <th>Ends At</th>
       <th>Status</th>
       <th>Actions</th>
     </tr>
@@ -40,6 +41,10 @@
         <td><%= appointment.client.full_name %></td>
         <td><%= appointment.location.name %></td>
         <td><%= l(appointment.scheduled_at, format: :long) %></td>
+        <td>
+          <% if appointment.ends_at %>
+            <%= l(appointment.ends_at, format: :long) %></td>
+          <% end %>
         <td><%= appointment.status %></td>
         <td>
           <div class="btn-group">

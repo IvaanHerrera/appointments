@@ -7,7 +7,7 @@ class AppointmentService
 
   def self.filtered_appointments(params)
     start_date = params[:start_date]&.to_date || 1.month.ago.to_date
-    end_date = params[:end_date]&.to_date || Date.today
+    end_date = params[:end_date]&.to_date || (Date.today + 1.month)
 
     Appointment.includes(:user, :client, :location)
                .where(scheduled_at: start_date.beginning_of_day..end_date.end_of_day)
