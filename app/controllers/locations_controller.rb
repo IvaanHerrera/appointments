@@ -4,8 +4,8 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.includes(:appointments)
-    @total_appointments = Locations::LocationStatisticsService.total_per_location
-    @unique_clients = Locations::LocationStatisticsService.unique_clients_per_location
+    @total_appointments = statistics_service[:total_per_location]
+    @unique_clients = statistics_service[:unique_clients_per_location]
   end
 
   def show; end
@@ -48,7 +48,11 @@ class LocationsController < ApplicationController
   def location_params
     params.require(:location).permit(
       :name, :address,
-      addresses_attributes: [ :id, :street, :city, :state, :zip_code, :country, :primary, :_destroy ],
+      addresses_attributes: [ :id, :street, :city, :state, :zip_code, :country, :primary, :_destroy ]
     )
+  end
+
+  def statistics_service
+    @statistics_service ||= Locations::LocationStatisticsService.new.call
   end
 end

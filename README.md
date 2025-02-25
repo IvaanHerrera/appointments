@@ -5,10 +5,6 @@ This project serves as a test for a job application. It is a Rails-based system 
 ## Table of Contents
 1. [Installation](#installation)
    - [Installing Docker](#installing-docker)
-   - [Setting up Docker Compose](#setting-up-docker-compose)
-     - Linux
-     - macOS
-     - Windows
 2. [Running the Project](#running-the-project)
 3. [Running Tests](#running-the-project)
 4. [Technology Stack](#technology-stack)
@@ -20,26 +16,6 @@ This project serves as a test for a job application. It is a Rails-based system 
 ### Installing Docker
 To run this project, you need to have Docker installed on your system. Follow the official installation guide for your operating system:
 - [Docker Installation Guide](https://docs.docker.com/get-docker/)
-
-### Setting up Docker Compose
-Docker Compose is required to run the application as a set of containers. Installation differs by platform:
-
-#### Linux
-```sh
-sudo apt update && sudo apt install docker-compose -y
-```
-
-#### macOS
-Docker Compose is included with [Docker Desktop](https://www.docker.com/products/docker-desktop/). Download and install it, then verify:
-```sh
-docker-compose version
-```
-
-#### Windows
-Docker Compose is also included with Docker Desktop for Windows. Ensure it is installed and check:
-```sh
-docker-compose version
-```
 
 ---
 
@@ -113,6 +89,34 @@ When the app is already running with `docker-compose` up, attach to the containe
 - **StimulusJS**
 
 ---
+
+## Project Description
+1. **Log in:**
+```
+# The system is configured with an administrator user for the test case, but new users can also be created from the signup form.
+# The credentials are:
+email = admin@example.com
+password = 'password'
+```
+
+2. **Client:**
+```
+In the user interface, you can see a table with the clients that have been created.
+You can create and edit clients as well as add multiple addresses and emails.
+```
+
+3. **Location:**
+```
+In the user interface, you can see a table with the branches/locations that have been created.
+You can create and edit locations, as well as add multiple addresses.
+```
+
+4. **Appointment:**
+```
+In the user interface, you can see a table with appointments that have been created.
+Appointments can be created and edited, but there is a validation to prevent overlapping schedules with another appointment in the same location.
+When creating an appointment, an appointment code is automatically generated, which is calculated based on an algorithm.
+```
 
 ## Files of interest
 

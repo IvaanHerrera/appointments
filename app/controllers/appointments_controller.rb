@@ -1,6 +1,4 @@
 class AppointmentsController < ApplicationController
-  protect_from_forgery except: :edit
-
   before_action :set_appointment, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
@@ -16,8 +14,8 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = AppointmentService.create(appointment_params)
-    if @appointment.persisted?
+    @appointment = Appointment.new(appointment_params)
+    if @appointment.save
       redirect_to @appointment, notice: "Appointment was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -28,7 +26,7 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    if AppointmentService.update(@appointment, appointment_params)
+    if @appointment.update(appointment_params)
       redirect_to @appointment, notice: "Appointment was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -36,7 +34,7 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    AppointmentService.destroy(@appointment)
+    @appointment.destroy
     redirect_to appointments_url, notice: "Appointment was successfully destroyed."
   end
 

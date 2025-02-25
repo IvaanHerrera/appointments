@@ -1,4 +1,6 @@
 class AppointmentCodeService
+  attr_reader :appointment
+
   MULTIPLIER = 17
   MODULUS = 26
   ASCII_A = 65
@@ -14,9 +16,9 @@ class AppointmentCodeService
   private
 
   def checksum
-    @checksum ||= sum_digits(@appointment.client.normalized_id) +
-                  sum_digits(@appointment.user.normalized_id) +
-                  sum_digits(@appointment.location.normalized_id) +
+    @checksum ||= sum_digits(appointment.client.normalized_id) +
+                  sum_digits(appointment.user.normalized_id) +
+                  sum_digits(appointment.location.normalized_id) +
                   sum_digits(scheduled_at_fragment)
   end
 
@@ -33,6 +35,6 @@ class AppointmentCodeService
   end
 
   def scheduled_at_fragment
-    @appointment.scheduled_at.strftime("%Y%m%d%H%M")[-4..]
+    appointment.scheduled_at.strftime("%Y%m%d%H%M")[-4..]
   end
 end
