@@ -51,6 +51,5 @@ appointment = Appointment.create!(
   client_id: client.id,
   location_id: location.id,
   scheduled_at: appointment_date,
-  end_time: appointment_date + 1.hour,
   status: 'pending'
 )
