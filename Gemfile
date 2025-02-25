@@ -64,10 +64,13 @@ group :development do
 
   # Live reloading for Hotwire applications [https://github.com/hotwired/spark]
   gem "hotwire-spark", "~> 0.1"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
+end
+
+group :development, :test do
+  gem "pry-rails"
 end

@@ -27,7 +27,7 @@ admin = User.create!(
 
 # Create a new Client
 client = Client.create!(
-  first_name: 'Martin', 
+  first_name: 'Martin',
   last_name: 'Fowler',
   email: 'client@example.com',
   telephone: '1234567890',

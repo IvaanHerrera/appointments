@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     if @client.save
-      redirect_to @client, notice: 'Client was successfully created.'
+      redirect_to @client, notice: "Client was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
-      redirect_to @client, notice: 'Client was successfully updated.'
+      redirect_to @client, notice: "Client was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client.destroy
-    redirect_to clients_url, notice: 'Client was successfully destroyed.'
+    redirect_to clients_url, notice: "Client was successfully destroyed."
   end
 
   private
@@ -47,9 +47,8 @@ class ClientsController < ApplicationController
   def client_params
     params.require(:client).permit(
       :first_name, :last_name, :telephone,
-      addresses_attributes: [:id, :street, :city, :state, :zip_code, :country, :primary, :_destroy],
-      emails_attributes: [:id, :address, :primary, :_destroy]
+      addresses_attributes: [ :id, :street, :city, :state, :zip_code, :country, :primary, :_destroy ],
+      emails_attributes: [ :id, :address, :primary, :_destroy ]
     )
   end
-  
 end

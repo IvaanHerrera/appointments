@@ -8,7 +8,7 @@ class AddressesController < ApplicationController
   def create
     @address = @addressable.addresses.build(address_params)
     if @address.save
-      redirect_to @addressable, notice: 'Address added successfully.'
+      redirect_to @addressable, notice: "Address added successfully."
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,7 +21,7 @@ class AddressesController < ApplicationController
   def update
     @address = @addressable.addresses.find(params[:id])
     if @address.update(address_params)
-      redirect_to @addressable, notice: 'Address updated successfully.'
+      redirect_to @addressable, notice: "Address updated successfully."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class AddressesController < ApplicationController
   def destroy
     @address = @addressable.addresses.find(params[:id])
     @address.destroy
-    redirect_to @addressable, notice: 'Address deleted successfully.'
+    redirect_to @addressable, notice: "Address deleted successfully."
   end
 
   private

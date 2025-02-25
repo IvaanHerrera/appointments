@@ -2,7 +2,6 @@ class AppointmentCodeService
   MULTIPLIER = 17
   MODULUS = 26
   ASCII_A = 65
-  
 
   def initialize(appointment)
     @appointment = appointment
@@ -22,7 +21,7 @@ class AppointmentCodeService
   end
 
   def generate_checksum
-    (checksum * MULTIPLIER).to_s.rjust(6, '0')
+    (checksum * MULTIPLIER).to_s.rjust(6, "0")
   end
 
   def generate_letter
@@ -34,6 +33,6 @@ class AppointmentCodeService
   end
 
   def scheduled_at_fragment
-    @appointment.scheduled_at.strftime('%Y%m%d%H%M')[-4..]
+    @appointment.scheduled_at.strftime("%Y%m%d%H%M")[-4..]
   end
 end

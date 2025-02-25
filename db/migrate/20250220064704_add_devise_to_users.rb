@@ -47,10 +47,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[8.0]
     # model already existed. Please edit below which fields you would like to remove in this migration.
     # raise ActiveRecord::IrreversibleMigration
     change_table :users do |t|
-      t.remove :encrypted_password :reset_password_token :reset_password_sent_at :remember_created_at
-      t.string :part_number
-      t.index :part_number
-      t.rename :upccode, :upc_code
+      t.remove :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at
     end
 
     remove_index :users, :email,                unique: true

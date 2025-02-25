@@ -1,7 +1,7 @@
 class User < ApplicationRecord
+  include HasNormalizedId
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  include HasNormalizedId
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -16,6 +16,6 @@ class User < ApplicationRecord
 
   def set_default_name
     return if name.present?
-    self.name = email.split('@').first.capitalize
+    self.name = email.split("@").first.capitalize
   end
 end

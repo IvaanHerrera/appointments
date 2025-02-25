@@ -18,7 +18,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
-      redirect_to @location, notice: 'Location was successfully created.'
+      redirect_to @location, notice: "Location was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class LocationsController < ApplicationController
 
   def update
     if @location.update(location_params)
-      redirect_to @location, notice: 'Location was successfully updated.'
+      redirect_to @location, notice: "Location was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class LocationsController < ApplicationController
 
   def destroy
     @location.destroy
-    redirect_to locations_url, notice: 'Location was successfully destroyed.'
+    redirect_to locations_url, notice: "Location was successfully destroyed."
   end
 
   private
@@ -48,7 +48,7 @@ class LocationsController < ApplicationController
   def location_params
     params.require(:location).permit(
       :name, :address,
-      addresses_attributes: [:id, :street, :city, :state, :zip_code, :country, :primary, :_destroy],
+      addresses_attributes: [ :id, :street, :city, :state, :zip_code, :country, :primary, :_destroy ],
     )
   end
 end
