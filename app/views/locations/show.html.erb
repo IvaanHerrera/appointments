@@ -1,5 +1,41 @@
-<h1><%= @location.name %></h1>
-<p><strong>Address:</strong> <%= @location.address %></p>
+<h1>Location Details</h1>
+
+<p><strong>Location Name:</strong> <%= @location.name %></p>
+
+<% unless @location.addresses.empty? %>
+  
+  <h4>Adresses</h4>
+  <% @location.addresses.each do |address, index| %>
+    <div class="card text-bg-light mb-3">
+    <div class="card-header">Address <%= index %></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <p><strong>Street:</strong> <%= address.street %></p>
+        </div>
+        <div class="col-6">
+          <p><strong>City:</strong> <%= address.city %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p><strong>State:</strong> <%= address.state %></p>
+        </div>
+        <div class="col-6">
+          <p><strong>Country:</strong> <%= address.country %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <p><strong>Zip Code:</strong> <%= address.zip_code %></p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_location_path(@location), class: 'btn btn-warning' %>
 <%= link_to 'Back', locations_path, class: 'btn btn-secondary' %>

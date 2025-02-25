@@ -1,4 +1,4 @@
-class LocationStatisticsService
+class Locations::LocationStatisticsService
   def self.call
     {
       total_per_location: total_per_location,
@@ -13,6 +13,8 @@ class LocationStatisticsService
   end
 
   def self.unique_clients_per_location
-    Appointment.select(:location_id, :client_id).distinct.group(:location_id, :client_id)
+    unique_clients = Appointment.select(:location_id, :client_id).distinct
+    .group(:location_id)
+    .count(:client_id) 
   end
 end

@@ -3,13 +3,16 @@ class LocationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @locations = Location.all.order(:name)
+    @locations = Location.includes(:appointments)
+    @total_appointments = Locations::LocationStatisticsService.total_per_location
+    @unique_clients = Locations::LocationStatisticsService.unique_clients_per_location
   end
 
   def show; end
 
   def new
     @location = Location.new
+    @location.addresses.build
   end
 
   def create

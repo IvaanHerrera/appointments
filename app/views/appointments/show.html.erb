@@ -3,6 +3,11 @@
 <p><strong>Client:</strong> <%= @appointment.client.full_name %></p>
 <p><strong>Location:</strong> <%= @appointment.location.name %></p>
 <p><strong>Scheduled At:</strong> <%= l(@appointment.scheduled_at, format: :long) %></p>
+<p><strong>Ends At:</strong> 
+<% if @appointment.ends_at.present? %>
+  <%= l(@appointment.ends_at, format: :long) %>
+<% end %>
+</p>
 <p><strong>Status:</strong> <%= @appointment.status %></p>
 
 <%= link_to 'Edit', edit_appointment_path(@appointment), class: 'btn btn-warning' %>

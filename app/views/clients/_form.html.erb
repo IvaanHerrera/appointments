@@ -1,3 +1,13 @@
+<% if @client.errors.any? %>
+  <div class="alert alert-danger">
+    <h4><%= @client.errors.count %> errors were found:</h4>
+    <ul>
+      <% @client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_with(model: @client, local: true) do |f| %>
   <div class="form-group">
     <%= f.label :first_name %>
@@ -9,23 +19,23 @@
     <%= f.text_field :last_name, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mb-3">
     <%= f.label :telephone %>
     <%= f.text_field :telephone, class: 'form-control' %>
   </div>
 
-   <h3>Addresses</h3>
+  <h4>Addresses</h4>
   
-  <div data-controller="nested-address-form">
+  <div data-controller="nested-address-form" class="mb-3">
     <div data-nested-address-form-target="container">
       <%= f.fields_for :addresses do |address_form| %>
         <%= render "addresses/form_fields", f: address_form %>
       <% end %>
     </div>
 
-    <button type="button" class="btn btn-primary mt-2" data-action="nested-address-form#add">
-      Add Address
-    </button>
+     <button type="button" class="btn btn-primary mt-2" data-action="nested-address-form#add">
+        Add Address
+      </button>
 
     <template id="address-template">
       <%= f.fields_for :addresses, Address.new, child_index: "TEMPLATE_RECORD" do |address_form| %>
@@ -33,24 +43,28 @@
       <% end %>
     </template>
   </div>
-
+  <h4>Emails</h4>
   <!-- Emails Section -->
-<div data-controller="nested-email-form">
-  <div data-nested-email-form-target="container">
-    <%= f.fields_for :emails do |email_form| %>
-      <%= render "emails/form_fields", f: email_form %>
-    <% end %>
+  <div data-controller="nested-email-form">
+    <div data-nested-email-form-target="container">
+      <%= f.fields_for :emails do |email_form| %>
+        <%= render "emails/form_fields", f: email_form %>
+      <% end %>
+    </div>
+
+    <button type="button" class="btn btn-primary mt-2" data-action="nested-email-form#add">
+      Add Email
+    </button>
+
+    <template id="email-template">
+      <%= f.fields_for :emails, Email.new, child_index: "TEMPLATE_RECORD" do |email_form| %>
+        <%= render "emails/form_fields", f: email_form %>
+      <% end %>
+    </template>
+
   </div>
 
-  <button type="button" class="btn btn-primary mt-2" data-action="nested-email-form#add">
-    Add Email
-  </button>
 
-  <template id="email-template">
-    <%= f.fields_for :emails, Email.new, child_index: "TEMPLATE_RECORD" do |email_form| %>
-      <%= render "emails/form_fields", f: email_form %>
-    <% end %>
-  </template>
-
-  <%= f.submit class: 'btn btn-success' %>
+  
+  <%= f.submit class: 'btn btn-success mt-4' %>
 <% end %>

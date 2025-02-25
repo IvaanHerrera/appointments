@@ -1,6 +1,60 @@
-<h1><%= @client.full_name %></h1>
-<% @client.addresses.each do |address| %>
-  <p><strong>Contact Addrress:</strong> <%= address.street %></p>
+<h1>Client Details</h1>
+
+<p><strong>First Name:</strong> <%= @client.first_name %></p>
+<p><strong>Last Name:</strong> <%= @client.last_name %></p>
+<p><strong>Telephone:</strong> <%= @client.telephone %></p>
+
+<% unless @client.addresses.empty? %>
+  <h2>Adresses</h2>
+  <% @client.addresses.each do |address, index| %>
+    <div class="card text-bg-light mb-3">
+    <div class="card-header">Address <%= index %></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <p><strong>Street:</strong> <%= address.street %></p>
+        </div>
+        <div class="col-6">
+          <p><strong>City:</strong> <%= address.city %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p><strong>State:</strong> <%= address.state %></p>
+        </div>
+        <div class="col-6">
+          <p><strong>Country:</strong> <%= address.country %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <p><strong>Zip Code:</strong> <%= address.zip_code %></p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <% end %>
+<% end %>
+
+<% unless @client.emails.empty? %>
+  <h2>Emails</h2>
+  <% @client.emails.each do |email, index| %>
+    <div class="card text-bg-light mb-3">
+    <div class="card-header">Email <%= index %></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <p><strong>Email Address:</strong> <%= email.address %></p>
+        </div>
+        <div class="col-6">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-warning' %>
