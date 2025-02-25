@@ -23,5 +23,6 @@
       <%= f.text_field :country, class: "form-control", required: true %>
     </div>
   </div>
+  <%= f.hidden_field :_destroy %>
   <button type="button" class="btn btn-danger mt-2" data-action="nested-address-form#remove">Remove</button>
 </div>

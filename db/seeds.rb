@@ -43,7 +43,7 @@ location = Location.create!(
   organization_id: organization.id,
 )
 
-appointment_date = Time.zone.now
+appointment_date = Time.zone.now + 2.hours
 
 # Create an Appointment
 appointment = Appointment.create!(

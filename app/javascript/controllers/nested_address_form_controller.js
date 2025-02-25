@@ -17,6 +17,14 @@ export default class extends Controller {
 
   remove(event) {
     event.preventDefault();
-    event.target.closest(".nested-fields").remove();
+    const wrapper = event.target.closest(".nested-fields");
+    const destroyFlag = wrapper.querySelector("[name*='_destroy']");
+
+    if (destroyFlag) {
+      destroyFlag.value = "1";
+      wrapper.style.display = "none";
+    } else {
+      wrapper.remove();
+    }
   }
 }
